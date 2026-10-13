@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'com.drburghash.quran'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.drburghash.quran'
+        minSdk 26
+        targetSdk 34
+        versionCode 14
+        versionName '14.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+dependencies {
+    implementation 'androidx.webkit:webkit:1.13.0'
+}
