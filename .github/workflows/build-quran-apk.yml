@@ -1,4 +1,4 @@
-name: Build Quran Android APK
+name: Build Independent Quran Android APK
 
 on:
   workflow_dispatch:
@@ -46,22 +46,22 @@ jobs:
         run: gradle -p android --no-daemon assembleDebug
       - name: Stage package
         run: |
-          cp android/app/build/outputs/apk/debug/app-debug.apk Quran_V14.apk
-          ls -lh Quran_V14.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk Quran_Independent_V15.apk
+          ls -lh Quran_Independent_V15.apk
       - name: Upload APK for download
         uses: actions/upload-artifact@v4
         with:
-          name: Quran_V14_APK
-          path: Quran_V14.apk
+          name: Quran_Independent_V15_APK
+          path: Quran_Independent_V15.apk
           retention-days: 90
       - name: Publish direct download on GitHub Releases
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view v14.0 >/dev/null 2>&1; then
-            gh release upload v14.0 Quran_V14.apk --clobber
+          if gh release view v15.0-independent >/dev/null 2>&1; then
+            gh release upload v15.0-independent Quran_Independent_V15.apk --clobber
           else
-            gh release create v14.0 Quran_V14.apk \
-              --title "القرآن المتكامل V14 APK" \
-              --notes "تحديد مدة أو تاريخ إنهاء الخطة، اختيار الصفحات من قوائم منسدلة، حفظ موضع التوقف، ودعم النسخ الاحتياطي. نسخة Android مستقلة."
+            gh release create v15.0-independent Quran_Independent_V15.apk \
+              --title "القرآن المتكامل الجديد - نسخة مستقلة V15" \
+              --notes "نسخة مستقلة (com.drburghash.quran.independent) تثبت بجانب القرآن القديم دون إزالة بياناته. لاستعادة سجل الحفظ افتح الخطة ثم البيانات ثم استعادة نسخة الخطة. المتشابهات والتظليل تحتاج نقل نسخها المستقلة قبل حذف أي تطبيق."
           fi

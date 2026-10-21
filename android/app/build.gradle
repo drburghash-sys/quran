@@ -5,11 +5,11 @@ android {
     namespace 'com.drburghash.quran'
     compileSdk 35
     defaultConfig {
-        applicationId 'com.drburghash.quran'
+        applicationId 'com.drburghash.quran.independent'
         minSdk 26
         targetSdk 34
-        versionCode 14
-        versionName '14.0'
+        versionCode 15
+        versionName '15.0-independent'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
